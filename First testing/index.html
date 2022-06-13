@@ -5,22 +5,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
   <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-  <py-env>
-    - ./assets/py/scripts.py
-  </py-env>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/styles.css">
+  <py-env>
+    - paths:
+      - ./src/scripts.py
+  </py-env>
+  <link rel="stylesheet" href="./src/styles.css">
   <title>Testing PyScript</title>
 </head>
 <body>
 <py-title>Testing PyScript</py-title>
-<div id="datetime">The current time is <label id="today"></label></div>
-<div id="pi-value">One approximation for pi is <label id="pi"></label></div>
-<py-script src="./assets/py/scripts.py">
-  import scripts
-  pyscript.write('today', scripts.today())
-  pi = scripts.compute_pi(100000)
-  pyscript.write('pi', f'{pi:.3f}')
+<div>The current time is <label id="today"></label></div>
+<div>One approximation for pi is <label id="pi"></label></div>
+<py-script>
+import scripts as sc
+pyscript.write("today", sc.today())
+pi = sc.compute_pi(100000)
+pyscript.write("pi", "%.3f"%pi)
 </py-script>
 </body>
 </html>
